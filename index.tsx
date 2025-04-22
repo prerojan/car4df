@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { CardElement, Elements, useStripe, useElements } from '@stripe/react-stripe-js';
-import { Button } from "@/components/ui/button";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY!);
 
@@ -34,9 +33,9 @@ function CheckoutForm() {
     <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded-2xl shadow-lg space-y-4">
       <h2 className="text-2xl font-bold">Pagamento com Cartão</h2>
       <CardElement className="p-3 border rounded-md" />
-      <Button type="submit" disabled={!stripe || loading} className="w-full">
+      <button type="submit" disabled={!stripe || loading} className="w-full bg-blue-600 text-white p-2 rounded-xl">
         {loading ? 'Processando...' : 'Pagar'}
-      </Button>
+      </button>
       {mensagem && <p className="text-sm text-gray-600 mt-2">{mensagem}</p>}
     </form>
   );
